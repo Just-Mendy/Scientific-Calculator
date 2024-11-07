@@ -33,3 +33,25 @@ The calculator supports the following operations:
 1. Clone this repository to your local machine:
    ```bash
    git clone https://github.com/your-username/scientific-calculator.git
+
+   
+Exiting the Program
+
+To exit the calculator, select the "0" option.
+Code Structure
+
+The calculator program is contained within the ScientificCalculator.java file, where each mathematical operation is handled by its own case within a switch statement. Operations use Java’s built-in Math class for accurate and efficient calculations.
+License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+Contributing
+
+    Fork the repository.
+    Create a new branch for your feature (git checkout -b feature-name).
+    Commit your changes (git commit -am 'Add a new feature').
+    Push to the branch (git push origin feature-name).
+    Open a pull request.
+
+Acknowledgments
+
+Thanks to the Java community for providing resources and documentation on math functions and console-based applications.
