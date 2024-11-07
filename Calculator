@@ -1,0 +1,101 @@
+import java.util.Scanner;
+
+public class ScientificCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean exit = false;
+
+        System.out.println("Welcome to the Scientific Calculator!");
+
+        while (!exit) {
+            System.out.println("\nChoose an operation:");
+            System.out.println("1. Addition (+)");
+            System.out.println("2. Subtraction (-)");
+            System.out.println("3. Multiplication (*)");
+            System.out.println("4. Division (/)");
+            System.out.println("5. Power (x^y)");
+            System.out.println("6. Square Root (√x)");
+            System.out.println("7. Sine (sin)");
+            System.out.println("8. Cosine (cos)");
+            System.out.println("9. Tangent (tan)");
+            System.out.println("0. Exit");
+
+            System.out.print("Enter choice (0-9): ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1 -> {
+                    System.out.print("Enter first number: ");
+                    double num1 = scanner.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double num2 = scanner.nextDouble();
+                    System.out.println("Result: " + (num1 + num2));
+                }
+                case 2 -> {
+                    System.out.print("Enter first number: ");
+                    double num1 = scanner.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double num2 = scanner.nextDouble();
+                    System.out.println("Result: " + (num1 - num2));
+                }
+                case 3 -> {
+                    System.out.print("Enter first number: ");
+                    double num1 = scanner.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double num2 = scanner.nextDouble();
+                    System.out.println("Result: " + (num1 * num2));
+                }
+                case 4 -> {
+                    System.out.print("Enter first number: ");
+                    double num1 = scanner.nextDouble();
+                    System.out.print("Enter second number: ");
+                    double num2 = scanner.nextDouble();
+                    if (num2 != 0) {
+                        System.out.println("Result: " + (num1 / num2));
+                    } else {
+                        System.out.println("Error: Division by zero is not allowed.");
+                    }
+                }
+                case 5 -> {
+                    System.out.print("Enter base number: ");
+                    double base = scanner.nextDouble();
+                    System.out.print("Enter exponent: ");
+                    double exponent = scanner.nextDouble();
+                    System.out.println("Result: " + Math.pow(base, exponent));
+                }
+                case 6 -> {
+                    System.out.print("Enter number: ");
+                    double num = scanner.nextDouble();
+                    if (num >= 0) {
+                        System.out.println("Result: " + Math.sqrt(num));
+                    } else {
+                        System.out.println("Error: Cannot calculate square root of a negative number.");
+                    }
+                }
+                case 7 -> {
+                    System.out.print("Enter angle in degrees: ");
+                    double angle = scanner.nextDouble();
+                    System.out.println("Result: " + Math.sin(Math.toRadians(angle)));
+                }
+                case 8 -> {
+                    System.out.print("Enter angle in degrees: ");
+                    double angle = scanner.nextDouble();
+                    System.out.println("Result: " + Math.cos(Math.toRadians(angle)));
+                }
+                case 9 -> {
+                    System.out.print("Enter angle in degrees: ");
+                    double angle = scanner.nextDouble();
+                    System.out.println("Result: " + Math.tan(Math.toRadians(angle)));
+                }
+                case 0 -> {
+                    exit = true;
+                    System.out.println("Exiting the calculator. Goodbye!");
+                }
+                default -> System.out.println("Invalid choice. Please choose a valid operation.");
+            }
+        }
+
+        scanner.close();
+    }
+}
