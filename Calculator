@@ -1,8 +1,46 @@
-import java.util.Scanner;
-
 public class ScientificCalculator {
 
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    public double subtract(double a, double b) {
+        return a - b;
+    }
+
+    public double multiply(double a, double b) {
+        return a * b;
+    }
+
+    public double divide(double a, double b) {
+        if (b == 0) throw new ArithmeticException("Cannot divide by zero");
+        return a / b;
+    }
+
+    public double power(double base, double exponent) {
+        return Math.pow(base, exponent);
+    }
+
+    public double squareRoot(double num) {
+        if (num < 0) throw new ArithmeticException("Cannot calculate square root of a negative number");
+        return Math.sqrt(num);
+    }
+
+    public double sine(double angle) {
+        return Math.sin(Math.toRadians(angle));
+    }
+
+    public double cosine(double angle) {
+        return Math.cos(Math.toRadians(angle));
+    }
+
+    public double tangent(double angle) {
+        if (angle % 180 == 90) throw new ArithmeticException("Tangent is undefined at 90 degrees and odd multiples.");
+        return Math.tan(Math.toRadians(angle));
+    }
+
     public static void main(String[] args) {
+        ScientificCalculator calculator = new ScientificCalculator();
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
@@ -30,31 +68,31 @@ public class ScientificCalculator {
                     double num1 = scanner.nextDouble();
                     System.out.print("Enter second number: ");
                     double num2 = scanner.nextDouble();
-                    System.out.println("Result: " + (num1 + num2));
+                    System.out.println("Result: " + calculator.add(num1, num2));
                 }
                 case 2 -> {
                     System.out.print("Enter first number: ");
                     double num1 = scanner.nextDouble();
                     System.out.print("Enter second number: ");
                     double num2 = scanner.nextDouble();
-                    System.out.println("Result: " + (num1 - num2));
+                    System.out.println("Result: " + calculator.subtract(num1, num2));
                 }
                 case 3 -> {
                     System.out.print("Enter first number: ");
                     double num1 = scanner.nextDouble();
                     System.out.print("Enter second number: ");
                     double num2 = scanner.nextDouble();
-                    System.out.println("Result: " + (num1 * num2));
+                    System.out.println("Result: " + calculator.multiply(num1, num2));
                 }
                 case 4 -> {
                     System.out.print("Enter first number: ");
                     double num1 = scanner.nextDouble();
                     System.out.print("Enter second number: ");
                     double num2 = scanner.nextDouble();
-                    if (num2 != 0) {
-                        System.out.println("Result: " + (num1 / num2));
-                    } else {
-                        System.out.println("Error: Division by zero is not allowed.");
+                    try {
+                        System.out.println("Result: " + calculator.divide(num1, num2));
+                    } catch (ArithmeticException e) {
+                        System.out.println("Error: " + e.getMessage());
                     }
                 }
                 case 5 -> {
@@ -62,31 +100,35 @@ public class ScientificCalculator {
                     double base = scanner.nextDouble();
                     System.out.print("Enter exponent: ");
                     double exponent = scanner.nextDouble();
-                    System.out.println("Result: " + Math.pow(base, exponent));
+                    System.out.println("Result: " + calculator.power(base, exponent));
                 }
                 case 6 -> {
                     System.out.print("Enter number: ");
                     double num = scanner.nextDouble();
-                    if (num >= 0) {
-                        System.out.println("Result: " + Math.sqrt(num));
-                    } else {
-                        System.out.println("Error: Cannot calculate square root of a negative number.");
+                    try {
+                        System.out.println("Result: " + calculator.squareRoot(num));
+                    } catch (ArithmeticException e) {
+                        System.out.println("Error: " + e.getMessage());
                     }
                 }
                 case 7 -> {
                     System.out.print("Enter angle in degrees: ");
                     double angle = scanner.nextDouble();
-                    System.out.println("Result: " + Math.sin(Math.toRadians(angle)));
+                    System.out.println("Result: " + calculator.sine(angle));
                 }
                 case 8 -> {
                     System.out.print("Enter angle in degrees: ");
                     double angle = scanner.nextDouble();
-                    System.out.println("Result: " + Math.cos(Math.toRadians(angle)));
+                    System.out.println("Result: " + calculator.cosine(angle));
                 }
                 case 9 -> {
                     System.out.print("Enter angle in degrees: ");
                     double angle = scanner.nextDouble();
-                    System.out.println("Result: " + Math.tan(Math.toRadians(angle)));
+                    try {
+                        System.out.println("Result: " + calculator.tangent(angle));
+                    } catch (ArithmeticException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
                 }
                 case 0 -> {
                     exit = true;
